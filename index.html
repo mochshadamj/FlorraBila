@@ -902,6 +902,53 @@ footer p{font-size:0.72rem;color:rgba(255,255,255,0.2)}
   section{padding:5rem 5%}
   .countdown-cards{gap:0.5rem}
 }
+/* ── Product Card Price & Detail ── */
+.img-card-detail {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2.5rem 1.2rem 1.2rem;
+  background: linear-gradient(transparent, rgba(26,10,16,0.75));
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.img-card-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+.img-card-desc {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 400;
+  line-height: 1.4;
+}
+.img-card-price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.img-card-price-old {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  text-decoration: line-through;
+}
+.img-card-price-new {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #fff;
+}
+.img-card-badge {
+  background: var(--pink5);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--r3);
+  letter-spacing: 0.06em;
+}
 </style>
 </head>
 <body>
@@ -952,20 +999,43 @@ footer p{font-size:0.72rem;color:rgba(255,255,255,0.2)}
   </div>
 
   <div class="hero-img-strip">
-    <!-- Ganti semua placeholder di bawah dengan foto produk nyata -->
-    <div class="img-card">
-      <img src="A.jpeg">
-      <div class="img-card-label">Hand Bouquet Premium</div>
-    </div>
-    <div class="img-card">
-      <img src="https://i.pinimg.com/1200x/6e/2c/54/6e2c546b93a30dd52f8537f9786994b6.jpg">
-      <div class="img-card-label">Buket Wisuda</div>
-    </div>
-    <div class="img-card">
-      <img src="https://i.pinimg.com/1200x/26/5a/9f/265a9f92ca5d974be20e336dbafd3b24.jpg">
-      <div class="img-card-label">Buket Custom</div>
+  <div class="img-card">
+    <img src="A.jpeg">
+    <div class="img-card-detail">
+      
+      <div class="img-card-desc">Mawar segar & baby breath — cocok untuk semua momen</div>
+      <div class="img-card-price-row">
+        <span class="img-card-price-old">Rp 350.000</span>
+        <span class="img-card-price-new">Rp 189.000</span>
+        <span class="img-card-badge">Hemat 46%</span>
+      </div>
     </div>
   </div>
+  <div class="img-card">
+    <img src="https://i.pinimg.com/1200x/6e/2c/54/6e2c546b93a30dd52f8537f9786994b6.jpg">
+    <div class="img-card-detail">
+      
+      <div class="img-card-desc">Desain elegan, tahan lama, siap foto</div>
+      <div class="img-card-price-row">
+        <span class="img-card-price-old">Rp 320.000</span>
+        <span class="img-card-price-new">Rp 179.000</span>
+        <span class="img-card-badge">Terlaris</span>
+      </div>
+    </div>
+  </div>
+  <div class="img-card">
+    <img src="https://i.pinimg.com/1200x/26/5a/9f/265a9f92ca5d974be20e336dbafd3b24.jpg">
+    <div class="img-card-detail">
+      
+      <div class="img-card-desc">Pilih warna & bunga sesuai keinginanmu</div>
+      <div class="img-card-price-row">
+        <span class="img-card-price-old">Rp 400.000</span>
+        <span class="img-card-price-new">Rp 219.000</span>
+        <span class="img-card-badge">Custom</span>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- ══════ PROBLEM ══════ -->
@@ -1109,7 +1179,7 @@ footer p{font-size:0.72rem;color:rgba(255,255,255,0.2)}
       <!-- Foto produk 2 kolom kecil -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
         <div style="border-radius:var(--r2);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,var(--pink1),var(--pink3));display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:var(--pink5);font-weight:500;"><img src="https://i.pinimg.com/736x/80/19/50/801950ad435c191b6775b7011f734a3c.jpg"></div>
-        <div style="border-radius:var(--r2);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,var(--pink2),var(--pink4));display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#fff;font-weight:500;margin-top:2rem;"><img src="https://i.pinimg.com/1200x/4e/22/24/4e2224d1710500e73016bb970fbc8800.jpg"></div>
+        <div style="border-radius:var(--r2);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,var(--pink2),var(--pink4));display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#fff;font-weight:500;margin-top:2rem;"><img src="https://i.pinimg.com/1200x/5a/fe/69/5afe691573800f25a57fcd9e9f88ad32.jpg"></div>
       </div>
       <div style="background:var(--pink5);border-radius:var(--r2);padding:2rem 1.8rem;color:#fff">
         <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;letter-spacing:-0.02em;line-height:1">8.127</div>
