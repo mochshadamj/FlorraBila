@@ -558,6 +558,96 @@
       color: #475569;
     }
 
+        /* ============================================
+       TESTIMONI SECTION
+       ============================================ */
+    .testimoni {
+      background: #ffffff;
+    }
+
+    .testimoni .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .testimoni .section-desc {
+      margin: 0 auto;
+    }
+
+    .testimoni-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .testimoni-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .testimoni-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .testimoni-card {
+      background: linear-gradient(145deg, #f0f9ff, #ffffff);
+      border: 1px solid rgba(2, 132, 199, 0.1);
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .testimoni-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(2, 132, 199, 0.1);
+    }
+
+    .testimoni-avatar {
+      width: 60px;
+      height: 60px;
+      background: #e0f2fe;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: #0369a1;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .testimoni-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimoni-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0c4a6e;
+      margin-bottom: 2px;
+    }
+
+    .testimoni-status {
+      font-size: 0.8rem;
+      color: #0284c7;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .testimoni-text {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
     /* ============================================
        LOKASI SECTION
        ============================================ */
@@ -890,6 +980,7 @@
       <li><a href="#opening">Cerita</a></li>
       <li><a href="#gallery">Galeri</a></li>
       <li><a href="#keunggulan">Keunggulan</a></li>
+      <li><a href="#testimoni">Testimoni</a></li>
       <li><a href="#lokasi">Lokasi</a></li>
       <li><a href="#cta">Kontak</a></li>
     </ul>
@@ -1051,6 +1142,55 @@
           </div>
           <h3>Rasa Gurih Alami</h3>
           <p>Diracik dari bumbu alami pilihan tanpa bahan pengawet. Rasa gurih yang khas dan alami menjadikan setiap suapan terasa istimewa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ============================================
+       TESTIMONI SECTION
+       ============================================ -->
+  <section class="testimoni" id="testimoni">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Testimoni</p>
+        <h2 class="section-title">Kata Mereka tentang Bu Dede</h2>
+        <p class="section-desc">Dengarkan langsung kesan pelanggan setia yang selalu memulai harinya dengan Bubur Ayam Bu Dede.</p>
+      </div>
+
+      <div class="testimoni-grid">
+        <!-- Testimoni 1 -->
+        <div class="testimoni-card fade-in">
+          <div class="testimoni-avatar">
+            <!-- Ganti src dengan foto pelanggan, atau biarkan inisial -->
+            <span>IR</span>
+            <!-- <img src="avatar-1.jpg" alt="Avatar"> -->
+          </div>
+          <h4 class="testimoni-name">Irfan Rahman</h4>
+          <p class="testimoni-status">Pelanggan Setia</p>
+          <p class="testimoni-text">"Buburnya lembut banget dan kuahnya benar-benar gurih. Toping ayam suwirnya juga tidak pelit. Pagi saya tidak lengkap kalau belum mampir ke Bu Dede."</p>
+        </div>
+
+        <!-- Testimoni 2 -->
+        <div class="testimoni-card fade-in">
+          <div class="testimoni-avatar">
+            <span>AS</span>
+            <!-- <img src="avatar-2.jpg" alt="Avatar"> -->
+          </div>
+          <h4 class="testimoni-name">Ayu Salsabila</h4>
+          <p class="testimoni-status">Pemesan Catering</p>
+          <p class="testimoni-text">"Sudah dua kali pesan catering untuk acara di kantor, dan peserta pada suka. Porsi pas, rasa konsisten, dan pengantaran tepat waktu. Terima kasih Bu Dede!"</p>
+        </div>
+
+        <!-- Testimoni 3 -->
+        <div class="testimoni-card fade-in">
+          <div class="testimoni-avatar">
+            <span>BK</span>
+            <!-- <img src="avatar-3.jpg" alt="Avatar"> -->
+          </div>
+          <h4 class="testimoni-name">Budi Kurniawan</h4>
+          <p class="testimoni-status">Warga Tamansari</p>
+          <p class="testimoni-text">"Tempatnya sederhana tapi rasanya juara. Bumbu alaminya terasa banget, tidak seperti bumbu instan. Selalu habis kalau datang tidak pas waktu buka."</p>
         </div>
       </div>
     </div>
