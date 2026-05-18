@@ -1,1430 +1,1217 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flora Billa — Buket Bunga Premium</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff5f8;color:#1a0a10;overflow-x:hidden}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubur Ayam Bu Dede - Awali Pagimu dengan Kehangatan</title>
+  <style>
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-:root{
-  --pink0:#fff5f8;
-  --pink1:#fce8f0;
-  --pink2:#f9cfe0;
-  --pink3:#f4a8c7;
-  --pink4:#ec7aaa;
-  --pink5:#d94e88;
-  --pink6:#b83572;
-  --white:#ffffff;
-  --ink:#1a0a10;
-  --ink2:#4a2535;
-  --ink3:#7a4a5a;
-  --ink4:#b09098;
-  --r:20px;
-  --r2:40px;
-  --r3:100px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-::selection{background:var(--pink3);color:#fff}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--pink1)}
-::-webkit-scrollbar-thumb{background:var(--pink4);border-radius:3px}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #1e293b;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-/* ════════════════════ NAV ════════════════════ */
-nav{
-  position:fixed;top:1.2rem;left:50%;transform:translateX(-50%);
-  z-index:999;
-  background:rgba(255,255,255,0.85);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(244,168,199,0.3);
-  border-radius:var(--r3);
-  padding:0.7rem 0.7rem 0.7rem 1.8rem;
-  display:flex;align-items:center;gap:0;
-  width:min(820px,92vw);
-  box-shadow:0 4px 32px rgba(217,78,136,0.1);
-  transition:box-shadow 0.3s;
-}
-nav:hover{box-shadow:0 8px 48px rgba(217,78,136,0.18)}
-.nav-brand{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:1.15rem;color:var(--ink);letter-spacing:-0.01em;
-  margin-right:auto;text-decoration:none;
-}
-.nav-brand span{color:var(--pink5)}
-.nav-links{display:flex;gap:0.2rem;margin-right:0.8rem}
-.nav-links a{
-  font-size:0.78rem;font-weight:500;
-  color:var(--ink3);text-decoration:none;
-  padding:0.5rem 1rem;border-radius:var(--r3);
-  transition:background 0.2s,color 0.2s;white-space:nowrap;
-}
-.nav-links a:hover{background:var(--pink1);color:var(--pink5)}
-.nav-btn{
-  background:var(--ink);color:#fff;
-  padding:0.7rem 1.6rem;border-radius:var(--r3);
-  font-size:0.8rem;font-weight:700;
-  text-decoration:none;white-space:nowrap;
-  transition:background 0.25s,transform 0.15s;
-  letter-spacing:0.01em;
-}
-.nav-btn:hover{background:var(--pink5);transform:scale(1.03)}
+    /* ============================================
+       BACKGROUND UTAMA - CLOUDY MORNING BLUE
+       Ganti kode warna di bawah ini untuk mengubah
+       warna latar belakang utama halaman
+       ============================================ */
+    body {
+      background-color: #e0f2fe; /* Biru langit sangat terang */
+    }
 
-/* ════════════════════ HERO ════════════════════ */
-#hero{
-  min-height:100vh;
-  padding:7rem 5% 4rem;
-  display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  text-align:center;
-  position:relative;overflow:hidden;
-  background:linear-gradient(160deg,#fff5f8 0%,#fce8f0 40%,#fff0f5 100%);
-}
+    /* ============================================
+       ANIMASI FLOATING - EFEK MENGAMBANG
+       Ubah nilai "animation-duration" untuk mengatur
+       kecepatan animasi (semakin kecil = semakin cepat)
+       Ubah nilai "translateY" untuk mengatur jarak naik-turun
+       ============================================ */
+    @keyframes floatAnimation {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-18px); }
+    }
 
-/* blob bg */
-.blob{
-  position:absolute;border-radius:50%;
-  filter:blur(80px);opacity:0.5;
-  pointer-events:none;
-  animation:blobFloat 8s ease-in-out infinite;
-}
-.blob-a{
-  width:500px;height:500px;
-  background:radial-gradient(circle,#f9cfe0,transparent);
-  top:-100px;right:-100px;
-  animation-delay:0s;
-}
-.blob-b{
-  width:400px;height:400px;
-  background:radial-gradient(circle,#fce8f0,transparent);
-  bottom:-80px;left:-80px;
-  animation-delay:-3s;
-}
-.blob-c{
-  width:300px;height:300px;
-  background:radial-gradient(circle,#f4a8c7 0%,transparent 70%);
-  top:40%;left:20%;opacity:0.25;
-  animation-delay:-5s;
-}
-@keyframes blobFloat{
-  0%,100%{transform:translateY(0) scale(1)}
-  50%{transform:translateY(-30px) scale(1.05)}
-}
+    .floating-animation {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 100;
+      /* Animasi: durasi 3s, infinite, ease-in-out */
+      animation: floatAnimation 3s ease-in-out infinite;
+      pointer-events: none;
+    }
 
-.hero-badge{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:var(--white);border:1px solid var(--pink2);
-  border-radius:var(--r3);padding:0.45rem 1.1rem;
-  font-size:0.75rem;font-weight:600;color:var(--pink5);
-  letter-spacing:0.06em;text-transform:uppercase;
-  margin-bottom:2rem;
-  box-shadow:0 2px 12px rgba(217,78,136,0.08);
-  animation:fadeDown 0.6s ease both;
-}
-.hero-badge::before{
-  content:'';width:7px;height:7px;border-radius:50%;
-  background:var(--pink4);animation:blink 1.5s ease-in-out infinite;
-}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .floating-animation img,
+    .floating-animation .lottie-placeholder {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      opacity: 0.85;
+    }
 
-.hero-title{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(3rem,7vw,6.5rem);
-  line-height:1;letter-spacing:-0.03em;color:var(--ink);
-  margin-bottom:1.5rem;
-  animation:fadeUp 0.7s 0.1s ease both;
-}
-.hero-title .highlight{
-  display:inline-block;
-  background:linear-gradient(135deg,var(--pink5),var(--pink4));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.hero-title .outline-txt{
-  -webkit-text-stroke:2px var(--pink4);
-  color:transparent;
-}
+    /* ============================================
+       NAVIGASI
+       ============================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.hero-sub{
-  font-size:clamp(1rem,1.6vw,1.15rem);
-  line-height:1.75;color:var(--ink3);
-  max-width:560px;margin:0 auto 2.5rem;
-  animation:fadeUp 0.7s 0.2s ease both;
-}
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    }
 
-.hero-actions{
-  display:flex;gap:1rem;flex-wrap:wrap;
-  justify-content:center;
-  animation:fadeUp 0.7s 0.3s ease both;
-  margin-bottom:4rem;
-}
-.btn-pink{
-  background:linear-gradient(135deg,var(--pink5),var(--pink4));
-  color:#fff;padding:1rem 2.4rem;border-radius:var(--r3);
-  font-size:0.9rem;font-weight:700;text-decoration:none;
-  box-shadow:0 8px 32px rgba(217,78,136,0.3);
-  transition:transform 0.2s,box-shadow 0.2s;
-  display:inline-flex;align-items:center;gap:0.5rem;
-}
-.btn-pink:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 44px rgba(217,78,136,0.42)}
-.btn-white-outline{
-  background:var(--white);color:var(--ink2);
-  border:1.5px solid var(--pink2);
-  padding:1rem 2.4rem;border-radius:var(--r3);
-  font-size:0.9rem;font-weight:600;text-decoration:none;
-  transition:border-color 0.2s,color 0.2s,box-shadow 0.2s;
-  display:inline-flex;align-items:center;gap:0.5rem;
-}
-.btn-white-outline:hover{border-color:var(--pink4);color:var(--pink5);box-shadow:0 4px 20px rgba(217,78,136,0.12)}
+    .nav-brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0369a1;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
 
-/* hero stats pill row */
-.hero-stats-row{
-  display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;
-  animation:fadeUp 0.7s 0.4s ease both;
-}
-.stat-pill{
-  background:var(--white);border:1px solid var(--pink2);
-  border-radius:var(--r3);padding:0.6rem 1.4rem;
-  display:flex;align-items:center;gap:0.6rem;
-  box-shadow:0 2px 12px rgba(217,78,136,0.06);
-  transition:transform 0.2s,box-shadow 0.2s;
-}
-.stat-pill:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(217,78,136,0.12)}
-.stat-pill strong{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:1.1rem;color:var(--ink);letter-spacing:-0.02em;
-}
-.stat-pill span{font-size:0.78rem;color:var(--ink3)}
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
 
-/* hero image strip */
-.hero-img-strip{
-  width:min(900px,92vw);margin:3.5rem auto 0;
-  display:grid;grid-template-columns:1.4fr 1fr 1fr;
-  gap:1rem;
-  animation:fadeUp 0.8s 0.5s ease both;
-}
-.img-card{
-  border-radius:var(--r2);
-  overflow:hidden;
-  position:relative;
-  cursor:pointer;
-  transition:transform 0.3s,box-shadow 0.3s;
-}
-.img-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 20px 60px rgba(217,78,136,0.2)}
-.img-card img{width:100%;height:100%;object-fit:cover;display:block}
-.img-placeholder{
-  width:100%;height:100%;
-  background:linear-gradient(135deg,var(--pink1),var(--pink3));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:0.4rem;color:var(--pink5);font-size:0.8rem;font-weight:500;min-height:180px;
-}
-.img-card:first-child{aspect-ratio:3/4}
-.img-card:not(:first-child){aspect-ratio:2/3}
-.img-card-label{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(transparent,rgba(26,10,16,0.65));
-  padding:2.5rem 1.2rem 1rem;
-  font-size:0.8rem;font-weight:600;color:#fff;
-}
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #0369a1;
+      transition: color 0.3s ease;
+      position: relative;
+    }
 
-/* ════════════════════ PROBLEM ════════════════════ */
-#problem{
-  padding:6rem 5%;
-  background:var(--ink);
-  position:relative;overflow:hidden;
-}
-.section-label{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:var(--r3);padding:0.4rem 1rem;
-  font-size:0.7rem;font-weight:600;color:var(--pink3);
-  letter-spacing:0.1em;text-transform:uppercase;
-  margin-bottom:1.5rem;
-}
-.section-label-dark{
-  background:var(--pink1);border:1px solid var(--pink2);
-  color:var(--pink5);
-}
-.prob-heading{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,4vw,3.6rem);
-  color:#fff;line-height:1.1;letter-spacing:-0.02em;
-  margin-bottom:3.5rem;max-width:600px;
-}
-.prob-heading span{color:var(--pink3)}
-.prob-cards{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:1px;background:rgba(255,255,255,0.06);
-  border-radius:var(--r);overflow:hidden;
-}
-.prob-card{
-  background:var(--ink);
-  padding:2.2rem 2rem;
-  transition:background 0.3s;
-  position:relative;overflow:hidden;
-}
-.prob-card:hover{background:#2d1020}
-.prob-card-num{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:3.5rem;color:rgba(244,168,199,0.1);
-  line-height:1;margin-bottom:1rem;
-}
-.prob-card-dot{
-  width:36px;height:36px;border-radius:50%;
-  border:1.5px solid rgba(244,168,199,0.25);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1rem;font-size:1.1rem;
-}
-.prob-card h3{
-  font-size:1rem;font-weight:700;color:#fff;margin-bottom:0.5rem;
-}
-.prob-card p{font-size:0.83rem;color:rgba(255,255,255,0.4);line-height:1.7}
-.prob-card-bar{
-  position:absolute;bottom:0;left:0;right:0;
-  height:2px;background:linear-gradient(90deg,var(--pink4),var(--pink3));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 0.4s;
-}
-.prob-card:hover .prob-card-bar{transform:scaleX(1)}
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #0284c7;
+      transition: width 0.3s ease;
+    }
 
-/* ════════════════════ BENEFITS ════════════════════ */
-#benefits{
-  padding:6rem 5%;
-  background:var(--white);
-}
-.benefits-top{
-  display:flex;justify-content:space-between;
-  align-items:flex-end;flex-wrap:wrap;gap:1.5rem;
-  margin-bottom:3.5rem;
-}
-.benefits-top h2{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,3.8vw,3.4rem);
-  letter-spacing:-0.02em;color:var(--ink);line-height:1.1;
-  max-width:480px;
-}
-.benefits-top h2 span{color:var(--pink5)}
-.benefits-top p{
-  font-size:0.9rem;color:var(--ink3);
-  line-height:1.8;max-width:360px;
-}
-.benefits-masonry{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:auto auto;
-  gap:1rem;
-}
-.ben-card{
-  background:var(--pink0);
-  border-radius:var(--r2);
-  padding:2rem;
-  border:1.5px solid transparent;
-  transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s,background 0.3s;
-  position:relative;overflow:hidden;cursor:default;
-}
-.ben-card:hover{
-  border-color:var(--pink3);
-  transform:translateY(-5px);
-  box-shadow:0 16px 48px rgba(217,78,136,0.12);
-  background:var(--white);
-}
-.ben-card.tall{grid-row:span 2}
-.ben-card.wide{grid-column:span 2}
-.ben-card-icon{
-  width:52px;height:52px;border-radius:var(--r);
-  background:var(--pink1);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;margin-bottom:1.4rem;
-  transition:background 0.3s,transform 0.3s;
-}
-.ben-card:hover .ben-card-icon{
-  background:linear-gradient(135deg,var(--pink4),var(--pink5));
-  transform:scale(1.08) rotate(-3deg);
-}
-.ben-card h3{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:1.05rem;color:var(--ink);margin-bottom:0.5rem;
-}
-.ben-card p{font-size:0.84rem;color:var(--ink3);line-height:1.75}
-.ben-card-tag{
-  display:inline-flex;margin-top:1rem;
-  background:var(--pink1);border-radius:var(--r3);
-  padding:0.3rem 0.8rem;font-size:0.72rem;font-weight:600;color:var(--pink5);
-  transition:background 0.3s;
-}
-.ben-card:hover .ben-card-tag{background:var(--pink2)}
+    .nav-links a:hover::after {
+      width: 100%;
+    }
 
-/* ════════════════════ WHY ════════════════════ */
-#why{
-  padding:6rem 5%;
-  background:var(--pink0);
-  position:relative;overflow:hidden;
-}
-.why-inner{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:center;
-}
-.why-left{}
-.why-left .section-label-dark{margin-bottom:1.5rem}
-.why-left h2{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,3.6vw,3.2rem);
-  letter-spacing:-0.02em;color:var(--ink);line-height:1.1;
-  margin-bottom:1.2rem;
-}
-.why-left h2 span{color:var(--pink5)}
-.why-left > p{
-  font-size:0.92rem;color:var(--ink3);
-  line-height:1.85;margin-bottom:2.5rem;
-}
-.why-img-wrap{
-  border-radius:var(--r2);overflow:hidden;
-  aspect-ratio:4/3;margin-top:2rem;
-  box-shadow:0 16px 60px rgba(217,78,136,0.15);
-}
-.why-img-wrap img{width:100%;height:100%;object-fit:cover}
-.why-img-ph{
-  width:100%;height:100%;
-  background:linear-gradient(135deg,var(--pink1),var(--pink3));
-  display:flex;align-items:center;justify-content:center;
-  font-size:0.85rem;color:var(--pink5);font-weight:500;
-}
-.why-checklist{
-  display:flex;flex-direction:column;gap:0.6rem;
-}
-.why-check{
-  display:flex;align-items:flex-start;gap:0.9rem;
-  background:var(--white);
-  border:1px solid var(--pink2);
-  border-radius:var(--r);
-  padding:1rem 1.2rem;
-  transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;
-  cursor:default;
-}
-.why-check:hover{
-  border-color:var(--pink4);
-  transform:translateX(6px);
-  box-shadow:0 4px 20px rgba(217,78,136,0.1);
-}
-.why-check-ico{
-  width:36px;height:36px;border-radius:50%;
-  background:linear-gradient(135deg,var(--pink4),var(--pink5));
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:1rem;flex-shrink:0;font-weight:700;
-}
-.why-check-text h4{
-  font-size:0.9rem;font-weight:700;color:var(--ink);margin-bottom:0.15rem;
-}
-.why-check-text p{font-size:0.8rem;color:var(--ink3);line-height:1.6}
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* ════════════════════ TESTI ════════════════════ */
-#testimonials{
-  padding:6rem 5%;
-  background:var(--white);
-  overflow:hidden;
-}
-.testi-header{
-  text-align:center;margin-bottom:3.5rem;
-}
-.testi-header h2{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,3.8vw,3.2rem);
-  letter-spacing:-0.02em;color:var(--ink);
-  margin:1rem 0 0.8rem;
-}
-.testi-header h2 span{color:var(--pink5)}
-.testi-header p{font-size:0.9rem;color:var(--ink3);max-width:480px;margin:0 auto;line-height:1.7}
+    /* ============================================
+       BACKGROUND BIRU HERO
+       Ganti kode warna gradient di bawah untuk
+       mengubah nuansa biru pada Hero Section
+       ============================================ */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        170deg,
+        #7dd3fc 0%,    /* Biru langit muda */
+        #bae6fd 30%,   /* Biru langit sangat muda */
+        #e0f2fe 60%,   /* Biru langit pucat */
+        #f0f9ff 100%   /* Putih kebiruan */
+      );
+      z-index: -2;
+    }
 
-/* marquee style testimonials */
-.testi-marquee-wrap{
-  position:relative;margin:0 -5%;
-}
-.testi-marquee-wrap::before,
-.testi-marquee-wrap::after{
-  content:'';
-  position:absolute;top:0;bottom:0;width:120px;z-index:1;pointer-events:none;
-}
-.testi-marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--white),transparent)}
-.testi-marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--white),transparent)}
-.testi-row{
-  display:flex;gap:1.2rem;
-  padding:0.5rem 5%;
-  overflow:hidden;
-  margin-bottom:1.2rem;
-}
-.testi-row-inner{
-  display:flex;gap:1.2rem;
-  animation:slideLeft 30s linear infinite;
-  will-change:transform;
-}
-.testi-row:last-child .testi-row-inner{
-  animation-direction:reverse;animation-duration:25s;
-}
-@keyframes slideLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse at 50% 80%,
+        rgba(255, 255, 255, 0.5) 0%,
+        transparent 70%
+      );
+      z-index: -1;
+    }
 
-.testi-bubble{
-  flex-shrink:0;width:300px;
-  background:var(--pink0);
-  border:1.5px solid var(--pink1);
-  border-radius:var(--r2);
-  padding:1.5rem 1.6rem;
-  transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;
-}
-.testi-bubble:hover{
-  border-color:var(--pink3);
-  transform:scale(1.02);
-  box-shadow:0 8px 32px rgba(217,78,136,0.12);
-}
-.testi-stars-mini{
-  display:flex;gap:2px;margin-bottom:0.8rem;
-}
-.testi-stars-mini span{
-  width:10px;height:10px;background:var(--pink4);
-  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-}
-.testi-quote-txt{
-  font-size:0.86rem;line-height:1.75;color:var(--ink2);
-  margin-bottom:1.2rem;font-style:italic;
-}
-.testi-who{display:flex;align-items:center;gap:0.7rem}
-.testi-ava{
-  width:34px;height:34px;border-radius:50%;
-  background:linear-gradient(135deg,var(--pink3),var(--pink5));
-  display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:0.78rem;color:#fff;flex-shrink:0;
-}
-.testi-who-name{font-size:0.82rem;font-weight:700;color:var(--ink)}
-.testi-who-city{font-size:0.72rem;color:var(--ink4)}
+    .hero-content {
+      max-width: 720px;
+    }
 
-/* ════════════════════ URGENCY ════════════════════ */
-#urgency{
-  padding:5rem 5%;
-  background:linear-gradient(135deg,var(--pink5) 0%,var(--pink6) 100%);
-  position:relative;overflow:hidden;
-}
-#urgency::before{
-  content:'';
-  position:absolute;top:-80px;right:-80px;
-  width:400px;height:400px;border-radius:50%;
-  background:rgba(255,255,255,0.06);pointer-events:none;
-}
-#urgency::after{
-  content:'';
-  position:absolute;bottom:-60px;left:-60px;
-  width:300px;height:300px;border-radius:50%;
-  background:rgba(255,255,255,0.04);pointer-events:none;
-}
-.urgency-inner{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:center;
-  position:relative;
-}
-.urgency-left .section-label{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.2);color:#fff}
-.urgency-left h2{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,3.8vw,3.4rem);
-  letter-spacing:-0.02em;color:#fff;line-height:1.1;
-  margin:1rem 0 1.2rem;
-}
-.urgency-left p{
-  font-size:0.9rem;color:rgba(255,255,255,0.75);
-  line-height:1.85;margin-bottom:2rem;
-}
-.stock-track-wrap{margin-bottom:2rem}
-.stock-meta-row{
-  display:flex;justify-content:space-between;
-  font-size:0.78rem;margin-bottom:0.5rem;
-}
-.stock-meta-row span{color:rgba(255,255,255,0.65)}
-.stock-meta-row strong{color:#fff;font-weight:700}
-.stock-track{
-  height:7px;background:rgba(255,255,255,0.2);
-  border-radius:var(--r3);overflow:hidden;
-}
-.stock-bar-fill{
-  height:100%;border-radius:var(--r3);
-  background:linear-gradient(90deg,rgba(255,255,255,0.9),rgba(255,255,255,0.6));
-  width:0;transition:width 1.8s 0.3s ease;
-}
-.btn-white-solid{
-  background:#fff;color:var(--pink5);
-  padding:1rem 2.4rem;border-radius:var(--r3);
-  font-size:0.88rem;font-weight:700;
-  text-decoration:none;display:inline-block;
-  transition:transform 0.2s,box-shadow 0.2s;
-  box-shadow:0 6px 24px rgba(0,0,0,0.15);
-}
-.btn-white-solid:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.2)}
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #0369a1;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
 
-/* countdown cards */
-.countdown-cards{
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;
-  margin-bottom:1.5rem;
-}
-.cd-card{
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.2);
-  border-radius:var(--r);
-  padding:1.6rem 1rem;text-align:center;
-  backdrop-filter:blur(8px);
-  transition:background 0.3s;
-}
-.cd-card:hover{background:rgba(255,255,255,0.2)}
-.cd-n{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2.4rem,4vw,3.8rem);
-  color:#fff;line-height:1;display:block;margin-bottom:0.3rem;
-}
-.cd-l{
-  font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;
-  color:rgba(255,255,255,0.55);
-}
-.urgency-note-card{
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:var(--r);
-  padding:1rem 1.3rem;
-  font-size:0.8rem;color:rgba(255,255,255,0.7);
-  line-height:1.6;text-align:center;
-}
-.urgency-note-card strong{color:#fff}
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: #0c4a6e;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
 
-/* ════════════════════ BONUS ════════════════════ */
-#bonus{
-  padding:6rem 5%;
-  background:var(--pink0);
-}
-.bonus-head{
-  text-align:center;margin-bottom:3.5rem;
-}
-.bonus-head h2{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,3.8vw,3.2rem);
-  letter-spacing:-0.02em;color:var(--ink);
-  margin:1rem 0 0.8rem;
-}
-.bonus-head h2 span{color:var(--pink5)}
-.bonus-head p{font-size:0.9rem;color:var(--ink3);max-width:480px;margin:0 auto;line-height:1.7}
-.bonus-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1.2rem;margin-bottom:2rem;
-}
-.bonus-tile{
-  background:var(--white);
-  border-radius:var(--r2);
-  padding:2rem 1.8rem;
-  border:1.5px solid var(--pink1);
-  text-align:center;
-  position:relative;overflow:hidden;
-  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
-}
-.bonus-tile:hover{
-  transform:translateY(-6px);
-  border-color:var(--pink3);
-  box-shadow:0 16px 48px rgba(217,78,136,0.14);
-}
-.bonus-ribbon{
-  position:absolute;top:14px;right:-20px;
-  background:var(--pink5);color:#fff;
-  font-size:0.58rem;font-weight:700;letter-spacing:0.1em;
-  padding:0.3rem 2rem;transform:rotate(45deg);
-  text-transform:uppercase;
-}
-.bonus-icon-big{
-  width:64px;height:64px;border-radius:var(--r2);
-  background:var(--pink1);margin:0 auto 1.2rem;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.8rem;
-  transition:transform 0.3s,background 0.3s;
-}
-.bonus-tile:hover .bonus-icon-big{
-  background:linear-gradient(135deg,var(--pink3),var(--pink5));
-  transform:scale(1.08) rotate(-4deg);
-}
-.bonus-tile h4{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:0.95rem;color:var(--ink);margin-bottom:0.5rem;
-}
-.bonus-tile p{font-size:0.8rem;color:var(--ink3);line-height:1.65;margin-bottom:1rem}
-.bonus-val{
-  display:flex;align-items:center;justify-content:center;gap:0.5rem;
-}
-.bonus-val s{font-size:0.82rem;color:var(--ink4)}
-.bonus-val strong{
-  font-size:0.95rem;font-weight:700;color:var(--pink5);
-}
-.bonus-total-strip{
-  background:var(--ink);border-radius:var(--r);
-  padding:1.4rem 2rem;
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1rem;
-}
-.bonus-total-strip p{font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
-.bonus-total-num{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:1.5rem;color:var(--pink3);letter-spacing:-0.01em;
-}
-.bonus-total-strip .btn-pink{padding:0.7rem 1.8rem;font-size:0.8rem;box-shadow:none}
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: #475569;
+      max-width: 540px;
+      margin: 0 auto 32px;
+    }
 
-/* ════════════════════ CTA ════════════════════ */
-#cta{
-  padding:7rem 5%;
-  background:var(--white);
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-.cta-card{
-  max-width:680px;margin:0 auto;
-  background:linear-gradient(135deg,var(--pink0) 0%,var(--pink1) 50%,var(--pink0) 100%);
-  border:2px solid var(--pink2);
-  border-radius:var(--r2);
-  padding:4rem 3rem;
-  position:relative;overflow:hidden;
-}
-.cta-card::before{
-  content:'';
-  position:absolute;top:-60px;right:-60px;
-  width:220px;height:220px;border-radius:50%;
-  background:var(--pink2);opacity:0.5;
-  pointer-events:none;
-}
-.cta-card::after{
-  content:'';
-  position:absolute;bottom:-40px;left:-40px;
-  width:160px;height:160px;border-radius:50%;
-  background:var(--pink2);opacity:0.4;
-  pointer-events:none;
-}
-.cta-card > *{position:relative}
-.cta-card h2{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,4vw,3.2rem);
-  letter-spacing:-0.02em;color:var(--ink);
-  line-height:1.1;margin:1rem 0 0.8rem;
-}
-.cta-card h2 span{color:var(--pink5)}
-.cta-card > p{
-  font-size:0.9rem;color:var(--ink3);
-  margin-bottom:2.5rem;line-height:1.7;
-}
-.price-pill{
-  display:inline-flex;align-items:center;gap:1rem;
-  background:var(--white);border:2px solid var(--pink2);
-  border-radius:var(--r3);padding:1rem 2rem;
-  margin-bottom:2rem;
-  box-shadow:0 4px 20px rgba(217,78,136,0.1);
-}
-.price-pill .old{
-  font-size:1rem;color:var(--ink4);
-  text-decoration:line-through;
-}
-.price-pill .divider{width:1px;height:28px;background:var(--pink2)}
-.price-pill .newp{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:2rem;color:var(--ink);letter-spacing:-0.02em;
-}
-.price-pill .newp span{color:var(--pink5)}
-.price-pill .badge{
-  background:linear-gradient(135deg,var(--pink4),var(--pink5));
-  color:#fff;border-radius:var(--r3);
-  padding:0.3rem 0.8rem;font-size:0.72rem;font-weight:700;
-  white-space:nowrap;
-}
-.cta-chips{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;
-  margin-bottom:2rem;
-}
-.chip-item{
-  background:var(--pink1);border:1px solid var(--pink2);
-  border-radius:var(--r3);padding:0.35rem 0.9rem;
-  font-size:0.72rem;font-weight:600;color:var(--pink5);
-}
-.cta-btn-big{
-  display:inline-flex;align-items:center;gap:0.6rem;
-  background:linear-gradient(135deg,var(--pink5),var(--pink4));
-  color:#fff;padding:1.1rem 3rem;border-radius:var(--r3);
-  font-size:0.95rem;font-weight:700;text-decoration:none;
-  box-shadow:0 10px 40px rgba(217,78,136,0.35);
-  transition:transform 0.25s,box-shadow 0.25s;
-  animation:pulseCta 2.5s ease-in-out infinite;
-  position:relative;overflow:hidden;
-}
-.cta-btn-big::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,var(--pink6),var(--pink5));
-  opacity:0;transition:opacity 0.25s;
-}
-.cta-btn-big span{position:relative}
-.cta-btn-big:hover::before{opacity:1}
-.cta-btn-big:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 50px rgba(217,78,136,0.45);animation:none}
-@keyframes pulseCta{
-  0%,100%{box-shadow:0 10px 40px rgba(217,78,136,0.35)}
-  50%{box-shadow:0 10px 56px rgba(217,78,136,0.55)}
-}
-.cta-trust{
-  margin-top:1.5rem;display:flex;justify-content:center;
-  gap:1.5rem;flex-wrap:wrap;
-  font-size:0.74rem;color:var(--ink4);
-}
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-/* ════════════════════ GUARANTEE ════════════════════ */
-#guarantee{
-  padding:5rem 5%;
-  background:var(--pink0);
-}
-.guarantee-inner{
-  max-width:900px;margin:0 auto;
-  display:grid;grid-template-columns:auto 1fr;
-  gap:4rem;align-items:center;
-}
-.guarantee-badge-wrap{text-align:center}
-.g-badge{
-  width:160px;height:160px;border-radius:50%;
-  background:var(--white);
-  border:2.5px solid var(--pink3);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  margin:0 auto 1rem;
-  box-shadow:0 8px 40px rgba(217,78,136,0.12);
-  position:relative;
-}
-.g-badge::before{
-  content:'';position:absolute;inset:8px;
-  border-radius:50%;border:1px dashed var(--pink2);
-}
-.g-badge-num{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:3.2rem;color:var(--pink5);line-height:1;
-}
-.g-badge-txt{
-  font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--ink4);text-align:center;line-height:1.5;
-}
-.guarantee-badge-wrap h3{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:1rem;color:var(--ink);text-align:center;
-}
-.guarantee-text p{
-  font-size:0.9rem;color:var(--ink3);line-height:1.9;
-  margin-bottom:0.8rem;
-}
-.guarantee-text p strong{color:var(--ink);font-weight:700}
-.guarantee-sign{
-  margin-top:1.2rem;padding-top:1.2rem;
-  border-top:1px solid var(--pink2);
-  font-size:0.82rem;font-style:italic;color:var(--ink4);
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
 
-/* ════════════════════ NB ════════════════════ */
-#nb{padding:4rem 5%;background:var(--white)}
-.nb-box{
-  max-width:820px;margin:0 auto;
-  background:var(--pink0);border-radius:var(--r2);
-  border:1.5px solid var(--pink1);
-  padding:2.5rem;
-}
-.nb-box h3{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:1.1rem;color:var(--ink);margin-bottom:1.5rem;
-}
-.nb-items{
-  display:flex;flex-direction:column;gap:0;
-  counter-reset:nb;
-}
-.nb-item{
-  display:grid;grid-template-columns:32px 1fr;
-  gap:0.8rem;padding:0.85rem 0;
-  border-bottom:1px solid var(--pink2);
-  font-size:0.84rem;color:var(--ink2);line-height:1.7;
-  align-items:start;
-}
-.nb-item:last-child{border-bottom:none}
-.nb-item::before{
-  counter-increment:nb;content:counter(nb);
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:0.75rem;color:var(--pink4);
-  background:var(--pink1);border-radius:50%;
-  width:24px;height:24px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;margin-top:0.1rem;
-}
+    .btn-primary {
+      background: #0284c7;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
 
-/* ════════════════════ FOOTER ════════════════════ */
-footer{
-  background:var(--ink);
-  padding:2.2rem 5%;
-  display:flex;justify-content:space-between;
-  align-items:center;flex-wrap:wrap;gap:1rem;
-}
-.footer-brand{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:1.1rem;color:rgba(255,255,255,0.3);
-  text-decoration:none;
-}
-.footer-brand span{color:var(--pink4)}
-footer p{font-size:0.72rem;color:rgba(255,255,255,0.2)}
+    .btn-primary:hover {
+      background: #0369a1;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
+    }
 
-/* ════════════════════ REVEAL ════════════════════ */
-.rv{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease}
-.rv.on{opacity:1;transform:translateY(0)}
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.7);
+      color: #0369a1;
+      border: 1.5px solid rgba(2, 132, 199, 0.25);
+      backdrop-filter: blur(8px);
+    }
 
-/* ════════════════════ RESPONSIVE ════════════════════ */
-@media(max-width:880px){
-  nav{padding:0.65rem 0.65rem 0.65rem 1.4rem;width:92vw}
-  .nav-links{display:none}
-  .hero-img-strip{grid-template-columns:1fr 1fr}
-  .hero-img-strip .img-card:last-child{display:none}
-  .opening-inner,
-  .urgency-inner,
-  .why-inner,
-  .guarantee-inner{grid-template-columns:1fr;gap:2.5rem}
-  .benefits-masonry{grid-template-columns:1fr 1fr}
-  .ben-card.tall,.ben-card.wide{grid-column:auto;grid-row:auto}
-  .benefits-top{flex-direction:column}
-  .testi-bubble{width:260px}
-  .price-pill{flex-direction:column;gap:0.5rem}
-  .price-pill .divider{width:100px;height:1px}
-  .cta-card{padding:3rem 2rem}
-  footer{flex-direction:column;text-align:center}
-  .why-img-wrap{display:none}
-}
-@media(max-width:560px){
-  #hero{padding:6rem 5% 3rem}
-  .hero-img-strip{grid-template-columns:1fr}
-  .hero-img-strip .img-card:not(:first-child){display:none}
-  .benefits-masonry{grid-template-columns:1fr}
-  .bonus-grid{grid-template-columns:1fr}
-  section{padding:5rem 5%}
-  .countdown-cards{gap:0.5rem}
-}
-/* ── Product Card Price & Detail ── */
-.img-card-detail {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 2.5rem 1.2rem 1.2rem;
-  background: linear-gradient(transparent, rgba(26,10,16,0.75));
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.img-card-label {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #fff;
-}
-.img-card-desc {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.7);
-  font-weight: 400;
-  line-height: 1.4;
-}
-.img-card-price-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.4rem;
-}
-.img-card-price-old {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.45);
-  text-decoration: line-through;
-}
-.img-card-price-new {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 1rem;
-  color: #fff;
-}
-.img-card-badge {
-  background: var(--pink5);
-  color: #fff;
-  font-size: 0.6rem;
-  font-weight: 700;
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--r3);
-  letter-spacing: 0.06em;
-}
-</style>
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       HERO FLOATING ANIM (Ayam/Uap di dalam Hero)
+       ============================================ */
+    .hero-float {
+      position: absolute;
+      animation: floatAnimation 4s ease-in-out infinite;
+    }
+
+    .hero-float-left {
+      top: 20%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .hero-float-right {
+      bottom: 25%;
+      right: 5%;
+      animation-delay: 1.5s;
+    }
+
+    .hero-float img,
+    .hero-float .lottie-placeholder {
+      width: 100px;
+      height: 100px;
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       SECTION UMUM
+       ============================================ */
+    section {
+      padding: 80px 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #0284c7;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: #0c4a6e;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: #475569;
+      max-width: 600px;
+    }
+
+    /* ============================================
+       OPENING SECTION
+       ============================================ */
+    .opening {
+      background: #ffffff;
+    }
+
+    .opening .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .opening .container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .opening-text .section-desc {
+      margin-bottom: 24px;
+    }
+
+    .opening-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .opening-image-placeholder {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 4 / 3;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0369a1;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 2px dashed rgba(2, 132, 199, 0.3);
+    }
+
+    .opening-image-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left 90%;
+    }
+
+    /* ============================================
+       GALLERY SECTION
+       ============================================ */
+    .gallery {
+      /* ============================================
+         BACKGROUND BIRU GALLERY
+         Ganti kode warna di bawah untuk mengubah
+         warna latar belakang bagian galeri
+         ============================================ */
+      background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
+    }
+
+    .gallery .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .gallery .section-desc {
+      margin: 0 auto;
+    }
+
+    /* Layout Galeri: 1 besar di tengah, 2 kecil di samping */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        grid-template-rows: 280px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-rows: 340px;
+      }
+    }
+
+    @media (max-width: 639px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .gallery-item {
+        aspect-ratio: 1 / 1;   /* Membuat gambar jadi kotak sempurna di HP */
+      }
+
+      .gallery-item .img-placeholder {
+        position: absolute;
+        inset: 0;
+      }
+    }
+
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item .img-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #bae6fd, #7dd3fc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0369a1;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 16px;
+      border: 2px dashed rgba(2, 132, 199, 0.3);
+    }
+
+    .gallery-item .img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ============================================
+       EFEK HOVER FOTO BUBUR AYAM
+       Ubah nilai scale dan shadow untuk mengatur
+       intensitas efek hover pada galeri
+       ============================================ */
+    .gallery-item .img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 132, 199, 0.15);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+    }
+
+    .gallery-item:hover .img-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 40px rgba(2, 132, 199, 0.2);
+    }
+
+    .gallery-item {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .img-overlay span {
+      background: rgba(255, 255, 255, 0.9);
+      color: #0369a1;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ============================================
+       KEUNGGULAN SECTION
+       ============================================ */
+    .keunggulan {
+      background: #ffffff;
+    }
+
+    .keunggulan .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .keunggulan .section-desc {
+      margin: 0 auto;
+    }
+
+    .keunggulan-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .keunggulan-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .keunggulan-card {
+      background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+      border: 1px solid rgba(2, 132, 199, 0.12);
+      border-radius: 24px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .keunggulan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(2, 132, 199, 0.12);
+    }
+
+    .keunggulan-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(2, 132, 199, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+    }
+
+    .keunggulan-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0c4a6e;
+      margin-bottom: 10px;
+    }
+
+    .keunggulan-card p {
+      font-size: 0.95rem;
+      color: #475569;
+    }
+
+    /* ============================================
+       LOKASI SECTION
+       ============================================ */
+    .lokasi {
+      /* ============================================
+         BACKGROUND BIRU LOKASI
+         ============================================ */
+      background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+
+    .lokasi .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .lokasi .container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .lokasi-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .lokasi-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .lokasi-detail .icon-circle {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: rgba(2, 132, 199, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0284c7;
+    }
+
+    .lokasi-detail .detail-text h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0c4a6e;
+      margin-bottom: 2px;
+    }
+
+    .lokasi-detail .detail-text p {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .lokasi-map {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(2, 132, 199, 0.15);
+      background: #bae6fd;
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0369a1;
+      font-size: 0.9rem;
+    }
+
+    .lokasi-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .btn-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 12px 24px;
+      background: #0284c7;
+      color: #fff;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+    }
+
+    .btn-map:hover {
+      background: #0369a1;
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       CTA SECTION (WhatsApp)
+       ============================================ */
+    .cta {
+      background: linear-gradient(170deg, #0284c7 0%, #0369a1 50%, #0c4a6e 100%);
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .cta .section-label {
+      color: #7dd3fc;
+    }
+
+    .cta .section-title {
+      color: #ffffff;
+    }
+
+    .cta .section-desc {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 auto 32px;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: #22c55e;
+      color: #fff;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+    }
+
+    .btn-whatsapp:hover {
+      background: #16a34a;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(34, 197, 94, 0.5);
+    }
+
+    .btn-whatsapp svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    footer {
+      background: #0c4a6e;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .footer-content p {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .footer-creator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-creator span {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Placeholder Logo Kampus */
+    .footer-logo-kampus {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .footer-logo-kampus img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ============================================
+       MOBILE NAV TOGGLE
+       ============================================ */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      width: 24px;
+      height: 2.5px;
+      background: #0369a1;
+      border-radius: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 639px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+    }
+
+    /* ============================================
+       AOS-LIKE FADE IN (Pure CSS)
+       ============================================ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       CLOUD DECORATIONS
+       ============================================ */
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 100px;
+      z-index: -1;
+    }
+
+    .cloud-1 {
+      width: 200px;
+      height: 60px;
+      top: 15%;
+      left: -40px;
+      animation: floatAnimation 6s ease-in-out infinite;
+    }
+
+    .cloud-2 {
+      width: 150px;
+      height: 45px;
+      top: 30%;
+      right: -30px;
+      animation: floatAnimation 5s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .cloud-3 {
+      width: 180px;
+      height: 55px;
+      bottom: 20%;
+      left: 10%;
+      animation: floatAnimation 7s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#" class="nav-brand">Flora<span>Billa</span></a>
-  <div class="nav-links">
-    <a href="#benefits">Keunggulan</a>
-    <a href="#testimonials">Ulasan</a>
-    <a href="#bonus">Bonus</a>
-  </div>
-  <a href="#cta" class="nav-btn">Pesan Sekarang</a>
-</nav>
-
-<!-- ══════ HERO ══════ -->
-<section id="hero">
-  <div class="blob blob-a"></div>
-  <div class="blob blob-b"></div>
-  <div class="blob blob-c"></div>
-
-  <div class="hero-badge">Koleksi Spesial Lebaran 2026</div>
-
-  <h1 class="hero-title">
-    Ungkapkan Rasa<br>
-    dengan <span class="highlight">Bunga</span><br>
-    <span class="outline-txt">Terbaik</span>
-  </h1>
-
-  <p class="hero-sub">
-    Buket bunga premium yang dirancang dengan cinta — segar, indah, dan tepat waktu. Untuk setiap momen yang layak dirayakan bersama orang-orang terpenting.
-  </p>
-
-  <div class="hero-actions">
-    <a href="#cta" class="btn-pink">
-      Pesan Buket Sekarang
-    </a>
-    <a href="#benefits" class="btn-white-outline">
-      Lihat Koleksi
-    </a>
+  <!-- ============================================
+       ANIMASI FLOATING SUDUT HALAMAN
+       Ganti src di bawah dengan file GIF transparan
+       atau embed Lottie Animation di sini.
+       Bertema: Ayam bergerak atau Uap panas mangkuk bubur
+       ============================================ -->
+  <div class="floating-animation">
+    <!-- CONTOH: Ganti src dengan GIF transparan ayam/uap Anda -->
+    <!-- Atau ganti seluruh <img> ini dengan <lottie-player> dari LottieFiles -->
+    <img src="ayam.gif" alt="Animasi Ayam">
   </div>
 
-  <div class="hero-stats-row">
-    <div class="stat-pill"><strong>8K+</strong><span>Pelanggan Puas</span></div>
-    <div class="stat-pill"><strong>4.9</strong><span>Rating Bintang</span></div>
-    <div class="stat-pill"><strong>50+</strong><span>Desain Buket</span></div>
-    <div class="stat-pill"><strong>1 Hari</strong><span>Pengiriman</span></div>
-  </div>
+  <!-- ============================================
+       NAVIGASI
+       ============================================ -->
+  <nav id="navbar">
+    <a href="#" class="nav-brand">Bubur Ayam Bu Dede</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#opening">Cerita</a></li>
+      <li><a href="#gallery">Galeri</a></li>
+      <li><a href="#keunggulan">Keunggulan</a></li>
+      <li><a href="#lokasi">Lokasi</a></li>
+      <li><a href="#cta">Kontak</a></li>
+    </ul>
+  </nav>
 
-  <div class="hero-img-strip">
-  <div class="img-card">
-    <img src="A.jpeg">
-    <div class="img-card-detail">
-      
-      <div class="img-card-desc">Mawar segar & baby breath — cocok untuk semua momen</div>
-      <div class="img-card-price-row">
-        <span class="img-card-price-old">Rp 350.000</span>
-        <span class="img-card-price-new">Rp 189.000</span>
-        <span class="img-card-badge">Hemat 46%</span>
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="hero" id="hero">
+    <!-- Dekorasi Awan -->
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+
+    <!-- Animasi Floating di Hero -->
+    <div class="hero-float hero-float-right">
+      <div class="lottie-placeholder" style="width:100px;height:100px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.4);border-radius:50%;color:#0369a1;font-size:0.65rem;text-align:center;font-weight:600;">
+        <img src="ayam.gif">
       </div>
     </div>
-  </div>
-  <div class="img-card">
-    <img src="https://i.pinimg.com/1200x/6e/2c/54/6e2c546b93a30dd52f8537f9786994b6.jpg">
-    <div class="img-card-detail">
-      
-      <div class="img-card-desc">Desain elegan, tahan lama, siap foto</div>
-      <div class="img-card-price-row">
-        <span class="img-card-price-old">Rp 320.000</span>
-        <span class="img-card-price-new">Rp 179.000</span>
-        <span class="img-card-badge">Terlaris</span>
+
+    <div class="hero-content">
+      <div class="hero-badge">Buka Setiap Pagi sampai Habis</div>
+      <h1>Awali Pagimu dengan Kehangatan Bubur Ayam Bu Dede</h1>
+      <p>Sajian bubur ayam khas Tasikmalaya yang hangat, gurih, dan menyelimuti. Diracik dengan resep turun-temurun untuk memulai hari Anda dengan penuh semangat.</p>
+      <div class="hero-buttons">
+        <a href="#cta" class="btn btn-primary">Pesan via WhatsApp</a>
+        <a href="#gallery" class="btn btn-secondary">Lihat Galeri</a>
       </div>
     </div>
-  </div>
-  <div class="img-card">
-    <img src="https://i.pinimg.com/1200x/26/5a/9f/265a9f92ca5d974be20e336dbafd3b24.jpg">
-    <div class="img-card-detail">
-      
-      <div class="img-card-desc">Pilih warna & bunga sesuai keinginanmu</div>
-      <div class="img-card-price-row">
-        <span class="img-card-price-old">Rp 400.000</span>
-        <span class="img-card-price-new">Rp 219.000</span>
-        <span class="img-card-badge">Custom</span>
+  </section>
+
+  <!-- ============================================
+       OPENING SECTION (Cerita Kelezatan)
+       ============================================ -->
+  <section class="opening" id="opening">
+    <div class="container">
+      <div class="opening-text fade-in">
+        <p class="section-label">Cerita Kami</p>
+        <h2 class="section-title">Rasa yang Tak Lekang oleh Waktu</h2>
+        <p class="section-desc">
+          Bubur Ayam Bu Dede hadir sejak puluhan tahun lalu, menghadirkan kelezatan bubur ayam dengan kuah gurih yang menghangatkan jiwa. Setiap mangkuk disajikan dengan penuh cinta dan perhatian pada detail rasa.
+        </p>
+        <p class="section-desc">
+          Dari nasi bubur yang lembut hingga topping ayam suwir yang melimpah, setiap gigitan adalah pengalaman sarapan yang sesungguhnya. Bukan sekadar makan, tapi tradisi pagi yang selalu dirindukan.
+        </p>
+      </div>
+      <div class="opening-visual fade-in">
+        <div class="opening-image-placeholder">
+          <!-- Ganti src dengan foto Anda -->
+          <img src="buryam3.jpeg" alt="Bubur Ayam Bu Dede">
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</section>
+  </section>
 
-<!-- ══════ PROBLEM ══════ -->
-<section id="problem">
-  <div class="section-label">Kamu Pernah Merasakan Ini?</div>
-  <h2 class="prob-heading rv">
-    Beli Bunga Online,<br>
-    Tapi Selalu <span>Kecewa?</span>
-  </h2>
-  <div class="prob-cards">
-    <div class="prob-card rv">
-      <div class="prob-card-num">01</div>
-      <div class="prob-card-dot">🥀</div>
-      <h3>Bunga Layu Saat Tiba</h3>
-      <p>Dikemas sembarangan, perjalanan jauh tanpa perlakuan yang tepat — bunga sampai sudah tidak segar lagi.</p>
-      <div class="prob-card-bar"></div>
-    </div>
-    <div class="prob-card rv">
-      <div class="prob-card-num">02</div>
-      <div class="prob-card-dot">📷</div>
-      <h3>Foto vs Kenyataan Jauh Berbeda</h3>
-      <p>Desain di katalog terlihat mewah, tapi yang datang terkesan murah dan asal-asalan. Mengecewakan.</p>
-      <div class="prob-card-bar"></div>
-    </div>
-    <div class="prob-card rv">
-      <div class="prob-card-num">03</div>
-      <div class="prob-card-dot">⏰</div>
-      <h3>Pengiriman Terlambat</h3>
-      <p>Dipesan untuk momen spesial tapi datang terlambat — momen sudah berlalu, bunga sudah tidak bermakna.</p>
-      <div class="prob-card-bar"></div>
-    </div>
-    <div class="prob-card rv">
-      <div class="prob-card-num">04</div>
-      <div class="prob-card-dot">🎨</div>
-      <h3>Tidak Bisa Custom</h3>
-      <p>Pilihan terbatas, tidak bisa request warna atau jenis bunga tertentu. Hasilnya terasa generik dan tidak personal.</p>
-      <div class="prob-card-bar"></div>
-    </div>
-  </div>
-</section>
+  <!-- ============================================
+       GALLERY SECTION (3 Foto Bubur Ayam)
+       ============================================ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Galeri</p>
+        <h2 class="section-title">Sajian yang Menggugah Selera</h2>
+        <p class="section-desc">Lihat kelezatan Bubur Ayam Bu Dede yang siap menghangatkan pagi Anda.</p>
+      </div>
 
-<!-- ══════ BENEFITS ══════ -->
-<section id="benefits">
-  <div class="benefits-top">
-    <div>
-      <div class="section-label-dark">Keunggulan Flora Billa</div>
-      <h2 class="rv">Beda dari yang<br>Pernah Kamu <span>Coba</span></h2>
-    </div>
-    <p class="rv">Setiap detail kami rancang dengan satu tujuan — memberikan pengalaman memesan bunga yang benar-benar menyenangkan dan hasilnya memuaskan.</p>
-  </div>
-  <div class="benefits-masonry">
-    <div class="ben-card tall rv">
-      <div class="ben-card-icon">🌸</div>
-      <h3>Bunga Segar Dipotong Setiap Hari</h3>
-      <p>Kami tidak menyimpan stok dari hari sebelumnya. Setiap buket dibuat dari bunga yang dipotong di pagi hari — menjamin kesegaran maksimal saat tiba di tanganmu.</p>
-      <div class="ben-card-tag">100% Fresh Guarantee</div>
-    </div>
-    <div class="ben-card rv">
-      <div class="ben-card-icon">🎨</div>
-      <h3>Desain Custom Sesuai Keinginanmu</h3>
-      <p>Ceritakan tema, warna, dan jenis bunga yang kamu inginkan — tim florist kami akan mewujudkannya menjadi karya yang unik.</p>
-      <div class="ben-card-tag">Custom Available</div>
-    </div>
-    <div class="ben-card rv">
-      <div class="ben-card-icon">🚀</div>
-      <h3>Same Day Delivery</h3>
-      <p>Pesan sebelum jam 12 siang, buket tiba di hari yang sama. Tepat waktu, setiap saat.</p>
-      <div class="ben-card-tag">Express Delivery</div>
-    </div>
-    <div class="ben-card wide rv">
-      <div class="ben-card-icon">🎁</div>
-      <h3>Kemasan Premium Siap Hadiahkan</h3>
-      <p>Setiap buket dibungkus dengan kertas premium, pita satin, dan kartu ucapan eksklusif. Unboxing-nya saja sudah menjadi pengalaman yang berkesan bagi penerima.</p>
-      <div class="ben-card-tag">Gift Ready</div>
-    </div>
-    <div class="ben-card rv">
-      <div class="ben-card-icon">💬</div>
-      <h3>Konsultasi Gratis via WhatsApp</h3>
-      <p>Bingung pilih desain? Tim kami siap memandu kamu menemukan buket yang sempurna untuk setiap kesempatan.</p>
-      <div class="ben-card-tag">Free Consultation</div>
-    </div>
-    <div class="ben-card rv">
-      <div class="ben-card-icon">🛡️</div>
-      <h3>Garansi Kesegaran 7 Hari</h3>
-      <p>Tidak puas dengan kondisi bunga saat tiba? Kami ganti atau kembalikan uangmu sepenuhnya. Tanpa banyak tanya.</p>
-      <div class="ben-card-tag">Money-Back Guarantee</div>
-    </div>
-  </div>
-</section>
+      <div class="gallery-grid fade-in">
+        <!-- Foto 1 - Kiri (Kecil) -->
+        <div class="gallery-item">
+          <div class="img-placeholder">
+            <!-- ============================================
+                 SLOT FOTO BUBUR AYAM 1
+                 Ganti src di bawah dengan path foto Anda
+                 ============================================ -->
+            <img src="buryam3.jpeg" alt="Bubur Ayam Bu Dede 1">
+          </div>
+          <div class="img-overlay">
+            <span>Bubur Ayam Spesial</span>
+          </div>
+        </div>
 
-<!-- ══════ WHY ══════ -->
-<section id="why">
-  <div class="why-inner">
-    <div class="why-left">
-      <div class="section-label-dark">Mengapa Pilih Kami</div>
-      <h2 class="rv">8.000+ Pelanggan<br>Tidak <span>Salah Pilih</span></h2>
-      <p class="rv">Flora Billa bukan sekadar toko bunga. Kami adalah mitra terpercaya untuk setiap momen penting yang ingin kamu rayakan dengan cara yang indah.</p>
-      <div class="why-checklist">
-        <div class="why-check rv">
-          <div class="why-check-ico">01</div>
-          <div class="why-check-text">
-            <h4>Florist Bersertifikat & Berpengalaman</h4>
-            <p>Tim kami terdiri dari florist terlatih dengan pengalaman lebih dari 5 tahun di industri bunga premium.</p>
+        <!-- Foto 2 - Tengah (Besar) -->
+        <div class="gallery-item">
+          <div class="img-placeholder">
+            <!-- ============================================
+                 SLOT FOTO BUBUR AYAM 2 (FOTO UTAMA)
+                 Ganti src di bawah dengan path foto Anda
+                 ============================================ -->
+            <img src="buryam2.jpeg" alt="Bubur Ayam Bu Dede 2">
+          </div>
+          <div class="img-overlay">
+            <span>Mangkuk Kelezatan</span>
           </div>
         </div>
-        <div class="why-check rv">
-          <div class="why-check-ico">02</div>
-          <div class="why-check-text">
-            <h4>Bahan Baku Pilihan Berkualitas Tinggi</h4>
-            <p>Hanya bunga dan material terbaik yang masuk ke workshop kami — disortir ketat setiap pagi sebelum proses produksi dimulai.</p>
+
+        <!-- Foto 3 - Kanan (Kecil) -->
+        <div class="gallery-item">
+          <div class="img-placeholder">
+            <!-- ============================================
+                 SLOT FOTO BUBUR AYAM 3
+                 Ganti src di bawah dengan path foto Anda
+                 ============================================ -->
+            <img src="buryam1.jpeg" alt="Bubur Ayam Bu Dede 3">
           </div>
-        </div>
-        <div class="why-check rv">
-          <div class="why-check-ico">03</div>
-          <div class="why-check-text">
-            <h4>Rating 4.9 dari Pembeli Nyata</h4>
-            <p>Bukan angka rekayasa. Rating kami berasal dari ribuan ulasan jujur pelanggan yang telah membuktikan sendiri kualitas Flora Billa.</p>
-          </div>
-        </div>
-        <div class="why-check rv">
-          <div class="why-check-ico">04</div>
-          <div class="why-check-text">
-            <h4>Harga Transparan, Tanpa Biaya Tersembunyi</h4>
-            <p>Harga yang kamu lihat sudah termasuk kemasan premium dan kartu ucapan. Tidak ada kejutan di akhir proses pembayaran.</p>
-          </div>
-        </div>
-        <div class="why-check rv">
-          <div class="why-check-ico">05</div>
-          <div class="why-check-text">
-            <h4>UMKM Lokal Kebanggaan Indonesia</h4>
-            <p>Setiap pembelian mendukung pengrajin dan petani bunga lokal. Kecantikan yang kamu beli membawa dampak nyata bagi komunitas kami.</p>
+          <div class="img-overlay">
+            <span>Toping Melimpah</span>
           </div>
         </div>
       </div>
-      <div class="why-img-wrap rv">
-        <!-- Ganti dengan foto workshop / proses pembuatan buket -->
-        <div class="why-img-ph"><img src="https://i.pinimg.com/736x/15/ee/87/15ee87feaae181707c7ac949a963ee94.jpg"></div>
-      </div>
     </div>
-    <div class="why-right rv" style="display:flex;flex-direction:column;gap:1rem;">
-      <!-- Foto produk 2 kolom kecil -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div style="border-radius:var(--r2);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,var(--pink1),var(--pink3));display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:var(--pink5);font-weight:500;"><img src="https://i.pinimg.com/736x/80/19/50/801950ad435c191b6775b7011f734a3c.jpg"></div>
-        <div style="border-radius:var(--r2);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,var(--pink2),var(--pink4));display:flex;align-items:center;justify-content:center;font-size:0.8rem;color:#fff;font-weight:500;margin-top:2rem;"><img src="https://i.pinimg.com/1200x/5a/fe/69/5afe691573800f25a57fcd9e9f88ad32.jpg"></div>
-      </div>
-      <div style="background:var(--pink5);border-radius:var(--r2);padding:2rem 1.8rem;color:#fff">
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:2.5rem;letter-spacing:-0.02em;line-height:1">8.127</div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);margin-top:0.3rem">Buket terkirim dengan sempurna</div>
-        <div style="margin-top:1.5rem;font-size:0.84rem;line-height:1.75;color:rgba(255,255,255,0.8)">"Setiap buket yang kami buat membawa cerita — dan kami bangga menjadi bagian dari momen terpentingmu."</div>
-        <div style="margin-top:1rem;font-size:0.78rem;color:rgba(255,255,255,0.5)">— Tim Flora Billa</div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══════ TESTIMONIALS ══════ -->
-<section id="testimonials">
-  <div class="testi-header">
-    <div class="section-label-dark" style="display:inline-flex;">Ulasan Pelanggan Nyata</div>
-    <h2 class="rv">Yang Mereka <span>Rasakan</span></h2>
-    <p class="rv">Ribuan pelanggan dari seluruh Indonesia telah membuktikan. Ini bukan klaim kami — ini kata-kata mereka sendiri.</p>
-  </div>
-  <div class="testi-marquee-wrap">
-    <div class="testi-row">
-      <div class="testi-row-inner">
-        <!-- Row 1 — duplikat untuk loop -->
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Bunganya masih segar banget pas sampai! Kemasannya mewah, kakak saya sampai nangis seneng. Definitely repeat order!"</p><div class="testi-who"><div class="testi-ava">DA</div><div><div class="testi-who-name">Dinda Aurellia</div><div class="testi-who-city">Jakarta Selatan</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Same day delivery beneran on time! Pesan jam 10 pagi, jam 3 sore sudah di tangan. Keren banget pelayanannya."</p><div class="testi-who"><div class="testi-ava">RP</div><div><div class="testi-who-name">Rifa Puspita</div><div class="testi-who-city">Bandung</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Sudah 7 kali order untuk berbagai acara — wisuda, ulang tahun, anniversary. Tidak pernah sekali pun kecewa."</p><div class="testi-who"><div class="testi-ava">MI</div><div><div class="testi-who-name">Maya Indah</div><div class="testi-who-city">Surabaya</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Request custom warna pink champagne, hasilnya persis seperti yang saya bayangkan. Tim CS-nya sabar banget ngayominnya!"</p><div class="testi-who"><div class="testi-ava">NR</div><div><div class="testi-who-name">Nisa Ramadhani</div><div class="testi-who-city">Yogyakarta</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Harganya sepadan banget sama kualitasnya. Kemasannya premium, bunganya cantik, dikirim tepat waktu. 10/10!"</p><div class="testi-who"><div class="testi-ava">LW</div><div><div class="testi-who-name">Laila Wulandari</div><div class="testi-who-city">Medan</div></div></div></div>
-        <!-- duplikat -->
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Bunganya masih segar banget pas sampai! Kemasannya mewah, kakak saya sampai nangis seneng. Definitely repeat order!"</p><div class="testi-who"><div class="testi-ava">DA</div><div><div class="testi-who-name">Dinda Aurellia</div><div class="testi-who-city">Jakarta Selatan</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Same day delivery beneran on time! Pesan jam 10 pagi, jam 3 sore sudah di tangan. Keren banget pelayanannya."</p><div class="testi-who"><div class="testi-ava">RP</div><div><div class="testi-who-name">Rifa Puspita</div><div class="testi-who-city">Bandung</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Sudah 7 kali order untuk berbagai acara — wisuda, ulang tahun, anniversary. Tidak pernah sekali pun kecewa."</p><div class="testi-who"><div class="testi-ava">MI</div><div><div class="testi-who-name">Maya Indah</div><div class="testi-who-city">Surabaya</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Request custom warna pink champagne, hasilnya persis seperti yang saya bayangkan. Tim CS-nya sabar banget ngayominnya!"</p><div class="testi-who"><div class="testi-ava">NR</div><div><div class="testi-who-name">Nisa Ramadhani</div><div class="testi-who-city">Yogyakarta</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Harganya sepadan banget sama kualitasnya. Kemasannya premium, bunganya cantik, dikirim tepat waktu. 10/10!"</p><div class="testi-who"><div class="testi-ava">LW</div><div><div class="testi-who-name">Laila Wulandari</div><div class="testi-who-city">Medan</div></div></div></div>
+  <!-- ============================================
+       KEUNGGULAN SECTION
+       ============================================ -->
+  <section class="keunggulan" id="keunggulan">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-label">Keunggulan</p>
+        <h2 class="section-title">Mengapa Bubur Ayam Bu Dede?</h2>
+        <p class="section-desc">Tiga alasan utama pelanggan selalu kembali setiap pagi.</p>
       </div>
-    </div>
-    <div class="testi-row">
-      <div class="testi-row-inner">
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Pertama kali pesan online dan ternyata pengalamannya jauh lebih baik dari ekspektasi. Pasti balik lagi!"</p><div class="testi-who"><div class="testi-ava">HS</div><div><div class="testi-who-name">Hendra Saputra</div><div class="testi-who-city">Makassar</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Kemasan gift box-nya mewah banget, terasa seperti beli dari toko bunga di luar negeri. Sangat memuaskan!"</p><div class="testi-who"><div class="testi-ava">FA</div><div><div class="testi-who-name">Fitri Amalia</div><div class="testi-who-city">Semarang</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"CS Flora Billa sabar banget nemenin saya bingung milih desain hampir 1 jam. Hasilnya luar biasa cantik!"</p><div class="testi-who"><div class="testi-ava">PR</div><div><div class="testi-who-name">Putri Rahayu</div><div class="testi-who-city">Palembang</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Buket wisuda sahabat saya bikin semua orang di wisuda noleh. Banyak yang tanya beli di mana!"</p><div class="testi-who"><div class="testi-ava">SR</div><div><div class="testi-who-name">Sari Dewi</div><div class="testi-who-city">Malang</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Garansi 7 harinya bikin saya tenang beli online. Tapi ternyata tidak perlu klaim, kualitasnya memang bagus banget!"</p><div class="testi-who"><div class="testi-ava">TM</div><div><div class="testi-who-name">Tari Mahesa</div><div class="testi-who-city">Denpasar</div></div></div></div>
-        <!-- duplikat -->
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Pertama kali pesan online dan ternyata pengalamannya jauh lebih baik dari ekspektasi. Pasti balik lagi!"</p><div class="testi-who"><div class="testi-ava">HS</div><div><div class="testi-who-name">Hendra Saputra</div><div class="testi-who-city">Makassar</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Kemasan gift box-nya mewah banget, terasa seperti beli dari toko bunga di luar negeri. Sangat memuaskan!"</p><div class="testi-who"><div class="testi-ava">FA</div><div><div class="testi-who-name">Fitri Amalia</div><div class="testi-who-city">Semarang</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"CS Flora Billa sabar banget nemenin saya bingung milih desain hampir 1 jam. Hasilnya luar biasa cantik!"</p><div class="testi-who"><div class="testi-ava">PR</div><div><div class="testi-who-name">Putri Rahayu</div><div class="testi-who-city">Palembang</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Buket wisuda sahabat saya bikin semua orang di wisuda noleh. Banyak yang tanya beli di mana!"</p><div class="testi-who"><div class="testi-ava">SR</div><div><div class="testi-who-name">Sari Dewi</div><div class="testi-who-city">Malang</div></div></div></div>
-        <div class="testi-bubble"><div class="testi-stars-mini"><span></span><span></span><span></span><span></span><span></span></div><p class="testi-quote-txt">"Garansi 7 harinya bikin saya tenang beli online. Tapi ternyata tidak perlu klaim, kualitasnya memang bagus banget!"</p><div class="testi-who"><div class="testi-ava">TM</div><div><div class="testi-who-name">Tari Mahesa</div><div class="testi-who-city">Denpasar</div></div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ══════ URGENCY ══════ -->
-<section id="urgency">
-  <div class="urgency-inner">
-    <div class="urgency-left">
-      <div class="section-label">Penawaran Terbatas</div>
-      <h2 class="rv">Stok Promo<br>Hampir Habis!</h2>
-      <p class="rv">Dari 150 paket promo yang disiapkan, hanya tersisa sedikit lagi. Setelah timer berakhir, harga kembali normal dan semua bonus hangus.</p>
-      <div class="stock-track-wrap rv">
-        <div class="stock-meta-row">
-          <span>Ketersediaan Stok Promo</span>
-          <strong>Sisa 31 dari 150 paket</strong>
+      <div class="keunggulan-grid">
+        <div class="keunggulan-card fade-in">
+          <div class="keunggulan-icon">
+            <!-- Ikon Porsi -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C6.48 2 2 6 2 10c0 1.5.5 2.9 1.4 4.1L2 22l5.9-1.4C9.1 21.5 10.5 22 12 22c5.52 0 10-4 10-8s-4.48-8-10-8z"/>
+              <circle cx="12" cy="14" r="1"/>
+            </svg>
+          </div>
+          <h3>Porsi Pas</h3>
+          <p>Tak terlalu sedikit, tak terlalu banyak. Ukuran yang pas untuk mengenyangkan perut di pagi hari tanpa rasa kelebihan.</p>
         </div>
-        <div class="stock-track">
-          <div class="stock-bar-fill" id="stkFill"></div>
+
+        <div class="keunggulan-card fade-in">
+          <div class="keunggulan-icon">
+            <!-- Ikon Topping -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3>Toping Melimpah</h3>
+          <p>Ayam suwir, cakwe, kacang tanah, bawang goreng, dan kuah gurih yang melimpah di setiap mangkuk tanpa terkecuali.</p>
+        </div>
+
+        <div class="keunggulan-card fade-in">
+          <div class="keunggulan-icon">
+            <!-- Ikon Rasa -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c4.97 0 9-2.69 9-6v-1H3v1c0 3.31 4.03 6 9 6z"/>
+              <path d="M3 9c0-3.31 4.03-6 9-6s9 2.69 9 6"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <path d="M9 9v3"/>
+              <path d="M15 9v3"/>
+            </svg>
+          </div>
+          <h3>Rasa Gurih Alami</h3>
+          <p>Diracik dari bumbu alami pilihan tanpa bahan pengawet. Rasa gurih yang khas dan alami menjadikan setiap suapan terasa istimewa.</p>
         </div>
       </div>
-      <a href="#cta" class="btn-white-solid rv">Klaim Harga Spesial Sekarang</a>
     </div>
-    <div class="urgency-right rv">
-      <div class="countdown-cards">
-        <div class="cd-card"><span class="cd-n" id="cH">08</span><span class="cd-l">Jam</span></div>
-        <div class="cd-card"><span class="cd-n" id="cM">45</span><span class="cd-l">Menit</span></div>
-        <div class="cd-card"><span class="cd-n" id="cS">00</span><span class="cd-l">Detik</span></div>
+  </section>
+
+  <!-- ============================================
+       LOKASI SECTION
+       ============================================ -->
+  <section class="lokasi" id="lokasi">
+    <div class="container">
+      <div class="lokasi-info fade-in">
+        <p class="section-label">Lokasi</p>
+        <h2 class="section-title">Temukan Kami di Tasikmalaya</h2>
+        <p class="section-desc">Kunjungi gerai kami dan nikmati kehangatan Bubur Ayam Bu Dede langsung di tempat.</p>
+
+        <div class="lokasi-detail">
+          <div class="icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="detail-text">
+            <h4>Alamat</h4>
+            <p>Bantarhuni Rt02/Rw08, Mulyasari, Tamansari, Kota Tasikmalaya</p>
+          </div>
+        </div>
+
+        <div class="lokasi-detail">
+          <div class="icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="detail-text">
+            <h4>Jam Operasional</h4>
+            <p>Buka Setiap Pagi sampai Habis</p>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=Bantarhuni+Rt02+Rw08+Mulyasari+Tamansari+Kota+Tasikmalaya" target="_blank" rel="noopener noreferrer" class="btn-map">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Buka di Google Maps
+        </a>
       </div>
-      <div class="urgency-note-card">
-        Sudah <strong>119 pembeli</strong> memutuskan hari ini.<br>
-        Jangan sampai kamu menyesal karena terlambat!
+
+      <div class="lokasi-map fade-in">
+        <!-- Ganti src iframe dengan embed Google Maps lokasi Anda -->
+        <!-- Atau biarkan placeholder ini -->
+        <iframe
+          src="https://www.google.com/maps?q=Bantarhuni%20RT02%2FRW08%2C%20Mulyasari%2C%20Tamansari%2C%20Kota%20Tasikmalaya&output=embed"
+          width="100%"
+          height="400"
+          style="border:0; border-radius:20px;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══════ BONUS ══════ -->
-<section id="bonus">
-  <div class="bonus-head">
-    <div class="section-label-dark" style="display:inline-flex;margin-bottom:1rem;">Hadiah Eksklusif</div>
-    <h2 class="rv">4 Bonus Gratis<br>Khusus Hari <span>Ini</span></h2>
-    <p class="rv">Total nilai bonus yang disertakan jauh melampaui harga buketnya sendiri. Ini bentuk apresiasi kami untuk setiap pelanggan yang mempercayai Flora Billa.</p>
-  </div>
-  <div class="bonus-grid">
-    <div class="bonus-tile rv">
-      <div class="bonus-ribbon">BONUS</div>
-      <div class="bonus-icon-big">💌</div>
-      <h4>Kartu Ucapan Eksklusif</h4>
-      <p>Kartu premium desain floral artisanal, ditulis tangan sesuai pesanmu yang personal.</p>
-      <div class="bonus-val"><s>Rp 45.000</s><strong>GRATIS</strong></div>
-    </div>
-    <div class="bonus-tile rv">
-      <div class="bonus-ribbon">BONUS</div>
-      <div class="bonus-icon-big">🌿</div>
-      <h4>Flower Food Sachet</h4>
-      <p>Nutrisi khusus bunga potong yang menjaga kesegaran 5-7 hari lebih lama di rumah.</p>
-      <div class="bonus-val"><s>Rp 35.000</s><strong>GRATIS</strong></div>
-    </div>
-    <div class="bonus-tile rv">
-      <div class="bonus-ribbon">BONUS</div>
-      <div class="bonus-icon-big">🎀</div>
-      <h4>Gift Wrap Tissue Premium</h4>
-      <p>Lapisan kertas tissue import anti-air yang mewah — menambah kesan elegan saat diterima.</p>
-      <div class="bonus-val"><s>Rp 40.000</s><strong>GRATIS</strong></div>
-    </div>
-    <div class="bonus-tile rv">
-      <div class="bonus-ribbon">BONUS</div>
-      <div class="bonus-icon-big">📖</div>
-      <h4>Panduan Merawat Bunga</h4>
-      <p>Panduan digital lengkap agar bunga tetap indah dan segar selama mungkin setelah diterima.</p>
-      <div class="bonus-val"><s>Rp 25.000</s><strong>GRATIS</strong></div>
-    </div>
-  </div>
-  <div class="bonus-total-strip rv">
-    <p>Total nilai bonus</p>
-    <div class="bonus-total-num">Rp 145.000 — Semua Gratis!</div>
-    <a href="#cta" class="btn-pink">Ambil Bonusnya</a>
-  </div>
-</section>
+  <!-- ============================================
+       CTA SECTION (WhatsApp)
+       ============================================ -->
+  <section class="cta" id="cta">
+    <div class="container">
+      <div class="fade-in">
+        <p class="section-label">Kontak Kami</p>
+        <h2 class="section-title">Ingin Pesan Banyak atau Catering?</h2>
+        <p class="section-desc">Hubungi Bu Dede langsung via WhatsApp untuk pemesanan dalam jumlah besar, catering acara, atau sekadar menanyakan informasi lebih lanjut.</p>
 
-<!-- ══════ CTA ══════ -->
-<section id="cta">
-  <div class="cta-card rv">
-    <div class="section-label-dark" style="display:inline-flex;margin-bottom:1.2rem;">Penawaran Spesial</div>
-    <h2>Dapatkan Buket <span>Flora Billa</span><br>Sebelum Kehabisan!</h2>
-    <p>Harga spesial Lebaran + 4 bonus eksklusif senilai Rp 145.000 — hanya tersedia hari ini selama stok masih ada.</p>
-    <div class="price-pill">
-      <span class="old">Rp 350.000</span>
-      <div class="divider"></div>
-      <span class="newp">Rp <span>189</span>.000</span>
-      <span class="badge">Hemat 46%</span>
-    </div>
-    <div class="cta-chips">
-      <span class="chip-item">Buket Premium</span>
-      <span class="chip-item">Kartu Ucapan</span>
-      <span class="chip-item">Flower Food</span>
-      <span class="chip-item">Gift Wrap</span>
-      <span class="chip-item">Garansi 7 Hari</span>
-      <span class="chip-item">Gratis Ongkir</span>
-      <span class="chip-item">COD Tersedia</span>
-    </div>
-    <!-- Ganti nomor WhatsApp -->
-    <a href="https://wa.me/6281211847264?text=Halo%20Flora%20Billa%2C%20saya%20mau%20pesan%20buket%20promo%20Lebaran" class="cta-btn-big" target="_blank">
-      <span>Pesan via WhatsApp Sekarang</span>
-    </a>
-    <div class="cta-trust">
-      <span>Pembayaran Aman</span>
-      <span>COD Tersedia</span>
-      <span>Kirim Seluruh Indonesia</span>
-      <span>Same Day Delivery</span>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ GUARANTEE ══════ -->
-<section id="guarantee">
-  <div class="guarantee-inner">
-    <div class="guarantee-badge-wrap rv">
-      <div class="g-badge">
-        <span class="g-badge-num">7</span>
-        <span class="g-badge-txt">Hari<br>Garansi</span>
+        <!-- ============================================
+             TOMBOL WHATSAPP
+             Ganti NOMOR_WA di href di bawah ini dengan
+             nomor WhatsApp Bu Dede (format: 628xxxxxxxxxx)
+             Contoh: https://wa.me/6281234567890
+             ============================================ -->
+        <a href="https://wa.me/6281211847264?text=Halo%20Bu%20Dede%2C%20saya%20ingin%20memesan%20Bubur%20Ayam" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+          <!-- Ikon WhatsApp -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Hubungi Bu Dede via WhatsApp
+        </a>
       </div>
-      <h3>Garansi Kepuasan Penuh</h3>
     </div>
-    <div class="guarantee-text rv">
-      <p>Kami sangat yakin dengan kualitas setiap buket yang kami kirimkan. Itulah mengapa kami berani memberikan garansi yang tegas dan jelas: jika dalam <strong>7 hari setelah buket tiba di tanganmu</strong>, kondisi bunga atau kualitas desain tidak sesuai dengan yang kami janjikan, kami akan <strong>mengganti atau mengembalikan uangmu 100%</strong>.</p>
-      <p>Tidak ada pertanyaan berlebihan. Tidak ada proses berbelit. <strong>Risiko sepenuhnya ada di tangan kami</strong> — bukan kamu. Belanja dengan tenang, karena Flora Billa selalu ada di belakangmu.</p>
-      <div class="guarantee-sign">— Tim Flora Billa, dengan sepenuh hati</div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">Bubur Ayam Bu Dede</div>
+      <p>Bantarhuni Rt02/Rw08, Mulyasari, Tamansari, Kota Tasikmalaya</p>
+      <p>Buka Setiap Pagi sampai Habis</p>
+
+      <div class="footer-creator">
+        <!-- ============================================
+             PLACEHOLDER LOGO KAMPUS
+             Ganti src di bawah dengan file logo kampus Anda
+             ============================================ -->
+        <div class="footer-logo-kampus">
+          <img src="https://pmb.stmik-dci.ac.id/wp-content/uploads/2021/07/1.png" alt="Logo Kampus">
+        </div>
+        <!-- ============================================
+             NAMA PEMBUAT
+             Ganti teks di bawah dengan nama kamu
+             ============================================ -->
+        <span>Dibuat oleh Eka Nurjanah</span>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- ══════ NB ══════ -->
-<section id="nb">
-  <div class="nb-box">
-    <h3>Catatan Penting Sebelum Memesan</h3>
-    <div class="nb-items">
-      <div class="nb-item">Harga promo Rp 189.000 hanya berlaku selama periode promo aktif dan stok masih tersedia — dapat berubah sewaktu-waktu.</div>
-      <div class="nb-item">Same day delivery berlaku untuk pemesanan yang diterima sebelum pukul 12.00 siang pada hari kerja (Senin–Sabtu).</div>
-      <div class="nb-item">Desain custom memerlukan waktu tambahan 1–2 hari kerja; konfirmasikan detail ke CS kami sebelum melakukan pembayaran.</div>
-      <div class="nb-item">Stok terbatas dan dilayani berdasarkan urutan masuknya konfirmasi pembayaran yang diterima tim kami.</div>
-      <div class="nb-item">Garansi 7 hari berlaku untuk kondisi produk yang tidak sesuai deskripsi atau standar kualitas kami, bukan akibat penanganan tidak tepat setelah penerimaan.</div>
-      <div class="nb-item">Klaim garansi wajib disertai foto produk dan nomor order, dikirimkan via WhatsApp ke CS Flora Billa.</div>
-      <div class="nb-item">Warna bunga aktual mungkin sedikit berbeda karena variasi alam — tim kami akan selalu konfirmasi terlebih dahulu sebelum pembuatan dimulai.</div>
-    </div>
-  </div>
-</section>
+  <!-- ============================================
+       JAVASCRIPT (Vanilla - Interaksi Halaman)
+       ============================================ -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
 
-<!-- FOOTER -->
-<footer>
-  <a href="#" class="footer-brand">Flora<span>Billa</span></a>
-  <p>2026 Flora Billa. Semua hak dilindungi. Produk UMKM Lokal Indonesia.</p>
-</footer>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
 
-<script>
-// Nav scroll shadow
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').style.boxShadow=
-    window.scrollY>60?'0 8px 48px rgba(217,78,136,0.18)':'0 4px 32px rgba(217,78,136,0.1)'
-})
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
 
-// Scroll reveal
-const els=document.querySelectorAll('.rv')
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('on'),i*70)
-      io.unobserve(e.target)
-    }
-  })
-},{threshold:0.08})
-els.forEach(el=>io.observe(el))
+    // Simple fade-in on scroll (Intersection Observer)
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
 
-// Countdown
-;(()=>{
-  const k='florabilla_v2_cd'
-  let end=localStorage.getItem(k)
-  const now=Date.now()
-  if(!end||+end<now){end=now+(8*3600+45*60)*1000;try{localStorage.setItem(k,end)}catch(e){}}
-  function tick(){
-    const rem=Math.max(0,+end-Date.now())
-    const h=Math.floor(rem/3600000)
-    const m=Math.floor((rem%3600000)/60000)
-    const s=Math.floor((rem%60000)/1000)
-    document.getElementById('cH').textContent=String(h).padStart(2,'0')
-    document.getElementById('cM').textContent=String(m).padStart(2,'0')
-    document.getElementById('cS').textContent=String(s).padStart(2,'0')
-  }
-  tick();setInterval(tick,1000)
-})()
+    fadeElements.forEach(el => fadeObserver.observe(el));
+  </script>
 
-// Stock bar
-setTimeout(()=>{
-  const f=document.getElementById('stkFill')
-  if(f)f.style.width='79.3%'
-},400)
-</script>
 </body>
 </html>
